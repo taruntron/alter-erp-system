@@ -1,0 +1,6 @@
+{
+  "name": "ApexSaaS Billing, Inventory & Accounting",
+  "description": "Web-based Billing, Inventory, POS and Accounting SaaS application with real-time Firestore sync and RBAC",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

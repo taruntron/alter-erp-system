@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Custom Clean Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+}
+
+/* Light Theme Surface Overrides */
+.bg-slate-950 {
+  background-color: #f1f5f9 !important;
+}
+
+.bg-slate-900 {
+  background-color: #ffffff !important;
+}
+
+.bg-slate-900\/90,
+.bg-slate-900\/80,
+.bg-slate-900\/70,
+.bg-slate-900\/60,
+.bg-slate-900\/50,
+.bg-slate-900\/40,
+.bg-slate-900\/30 {
+  background-color: #ffffff !important;
+}
+
+.bg-slate-850,
+.bg-slate-800 {
+  background-color: #f8fafc !important;
+}
+
+.bg-slate-800\/80,
+.bg-slate-800\/60,
+.bg-slate-800\/50,
+.bg-slate-800\/40,
+.bg-slate-800\/30,
+.bg-slate-800\/20,
+.bg-slate-800\/10 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Hover surfaces */
+.hover\:bg-slate-800:hover,
+.hover\:bg-slate-800\/60:hover,
+.hover\:bg-slate-800\/50:hover,
+.hover\:bg-slate-800\/40:hover,
+.hover\:bg-slate-900:hover,
+.hover\:bg-slate-900\/60:hover {
+  background-color: #e2e8f0 !important;
+}
+
+/* Borders */
+.border-slate-800,
+.border-slate-800\/80,
+.border-slate-800\/60,
+.border-slate-800\/50,
+.border-slate-800\/40,
+.border-slate-700,
+.border-slate-700\/80,
+.border-slate-700\/60,
+.border-slate-700\/50 {
+  border-color: #e2e8f0 !important;
+}
+
+.divide-slate-800 > :not([hidden]) ~ :not([hidden]),
+.divide-slate-700 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+
+/* Text colors */
+.text-slate-100 {
+  color: #0f172a !important;
+}
+
+.text-slate-200 {
+  color: #1e293b !important;
+}
+
+.text-slate-300 {
+  color: #334155 !important;
+}
+
+.text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Table styling for light theme */
+table thead tr,
+th {
+  background-color: #f8fafc !important;
+  color: #475569 !important;
+  border-color: #e2e8f0 !important;
+}
+
+table tbody tr {
+  border-color: #f1f5f9 !important;
+}
+
+table tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+
+/* Input fields & Selects inside light cards */
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+select,
+textarea {
+  color: #0f172a !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Card titles that used text-white on former dark surfaces */
+.bg-slate-900 h1.text-white,
+.bg-slate-900 h2.text-white,
+.bg-slate-900 h3.text-white,
+.bg-slate-900 h4.text-white,
+.bg-slate-900 div.text-white:not(.bg-purple-600 *):not(.bg-purple-700 *):not(.bg-emerald-500 *):not(.bg-emerald-600 *):not(.bg-blue-600 *):not(.bg-rose-600 *):not(.bg-amber-600 *),
+.bg-slate-900 span.text-white:not(.bg-purple-600 *):not(.bg-purple-700 *):not(.bg-emerald-500 *):not(.bg-emerald-600 *):not(.bg-blue-600 *):not(.bg-rose-600 *):not(.bg-amber-600 *),
+.bg-slate-950 h1.text-white,
+.bg-slate-950 h2.text-white,
+.bg-slate-950 h3.text-white,
+.bg-slate-950 h4.text-white,
+.bg-slate-950 td.text-white,
+.bg-slate-900 td.text-white,
+.bg-white td.text-white {
+  color: #0f172a !important;
+}
+
+/* Keep action buttons text pure white */
+button.text-white,
+a.text-white,
+button .text-white,
+a .text-white,
+.bg-purple-600,
+.bg-purple-700,
+.bg-purple-800,
+.bg-purple-900,
+.bg-emerald-500,
+.bg-emerald-600,
+.bg-emerald-700,
+.bg-blue-600,
+.bg-rose-600,
+.bg-amber-600 {
+  color: #ffffff;
+}
+
+/* Print Media Styles */
+@media print {
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .printable-document {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .paper-thermal-80mm {
+    width: 80mm !important;
+    max-width: 80mm !important;
+    margin: 0 auto !important;
+  }
+
+  .paper-a4 {
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+  }
+
+  .paper-a5 {
+    width: 100% !important;
+    max-width: 148mm !important;
+    margin: 0 auto !important;
+  }
+}

@@ -1,0 +1,102 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function getUserRole() {
+      return request.auth != null && exists(/databases/$(database)/documents/users/$(request.auth.uid)) 
+        ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role 
+        : 'cashier';
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && getUserRole() == 'admin';
+    }
+    
+    function isManager() {
+      return isAuthenticated() && (getUserRole() == 'manager' || getUserRole() == 'admin');
+    }
+
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+    }
+
+    match /products/{productId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    match /invoices/{invoiceId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if isManager();
+    }
+
+    match /stock_transfers/{transferId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isAuthenticated();
+      allow delete: if isAdmin();
+    }
+
+    match /expenses/{expenseId} {
+      allow read, write: if isAdmin() || isAuthenticated();
+    }
+
+    match /customers/{customerId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /sections/{sectionId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    match /suppliers/{supplierId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /purchases/{purchaseId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /quotations/{quotationId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /sales_returns/{returnId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /purchase_returns/{returnId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /purchase_orders/{orderId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /vouchers/{voucherId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /brands/{brandId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /categories/{categoryId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /uoms/{uomId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /system_counters/{counterId} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}

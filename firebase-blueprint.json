@@ -1,0 +1,93 @@
+{
+  "version": "1.0.0",
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "User profile and RBAC role assignment",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "manager", "cashier"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "activeSection": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "products": {
+      "title": "Product",
+      "description": "Inventory product item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sku": { "type": "string" },
+        "barcode": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "cost": { "type": "number" },
+        "price": { "type": "number" },
+        "stock_quantity": { "type": "number" },
+        "unit": { "type": "string" },
+        "lowStockThreshold": { "type": "number" }
+      },
+      "required": ["sku", "name", "cost", "price", "stock_quantity"]
+    },
+    "invoices": {
+      "title": "Invoice",
+      "description": "Sales invoice / POS transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoice_no": { "type": "string" },
+        "customer_name": { "type": "string" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "discount": { "type": "number" },
+        "other_amt": { "type": "number" },
+        "total": { "type": "number" },
+        "payments": { "type": "object" },
+        "tender_cash": { "type": "number" },
+        "return_amt": { "type": "number" },
+        "status": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "cashier_uid": { "type": "string" },
+        "cashier_name": { "type": "string" },
+        "section": { "type": "string" }
+      },
+      "required": ["invoice_no", "customer_name", "items", "total", "timestamp"]
+    },
+    "stock_transfers": {
+      "title": "StockTransfer",
+      "description": "Inter-section stock transfer document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "transfer_no": { "type": "string" },
+        "from_section": { "type": "string" },
+        "to_section": { "type": "string" },
+        "items": { "type": "array" },
+        "no_of_items": { "type": "number" },
+        "timestamp": { "type": "string" },
+        "user_uid": { "type": "string" },
+        "user_name": { "type": "string" },
+        "narration": { "type": "string" }
+      },
+      "required": ["transfer_no", "from_section", "to_section", "items"]
+    },
+    "expenses": {
+      "title": "Expense",
+      "description": "Business expense entry for accounting",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "date": { "type": "string" },
+        "description": { "type": "string" },
+        "created_by": { "type": "string" }
+      },
+      "required": ["category", "amount", "date"]
+    }
+  }
+}

@@ -1,0 +1,554 @@
+src/components/Reports/ReportsAnalyticsView.tsx:87:          subtitle: `Total Net Sales: KWD ${totalSalesRevenue.toFixed(3)} | Invoices: ${invoices.length}`,
+
+src/components/Reports/ReportsAnalyticsView.tsx:96:            (inv.subtotal || 0).toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:97:            (inv.discount || 0).toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:98:            (inv.total || 0).toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:103:            { label: 'Total Revenue', value: `KWD ${totalSalesRevenue.toFixed(3)}` },
+
+src/components/Reports/ReportsAnalyticsView.tsx:111:          subtitle: `Total Returns Refunded: KWD ${totalSalesReturnsAmount.toFixed(3)} | Count: ${salesReturns.length}`,
+
+src/components/Reports/ReportsAnalyticsView.tsx:120:            ret.refund_amount.toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:125:            { label: 'Total Returns', value: `KWD ${totalSalesReturnsAmount.toFixed(3)}` },
+
+src/components/Reports/ReportsAnalyticsView.tsx:133:          subtitle: `Total Purchases: KWD ${totalPurchasesAmount.toFixed(3)} | Count: ${purchases.length}`,
+
+src/components/Reports/ReportsAnalyticsView.tsx:142:            (p.total_amount || p.total || 0).toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:143:            (p.paid_amount || 0).toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:144:            (p.due_amount || 0).toFixed(3)
+
+src/components/Reports/ReportsAnalyticsView.tsx:147:            { label: 'Total Purchases', value: `KWD ${totalPurchasesAmount.toFixed(3)}` },
+
+src/components/Reports/ReportsAnalyticsView.tsx:155:          subtitle: `Total Debit Notes: KWD ${totalPurchaseReturnsAmount.toFixed(3)}`,
+
+src/components/Reports/ReportsAnalyticsView.tsx:164:            p.refund_amount.toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:169:            { label: 'Total Debit Notes', value: `KWD ${totalPurchaseReturnsAmount.toFixed(3)}` }
+
+src/components/Reports/ReportsAnalyticsView.tsx:176:          subtitle: `Customer Receivables: KWD ${customerReceivables.toFixed(3)} | Supplier Payables: KWD ${supplierPayables.toFixed(3)}`,
+
+src/components/Reports/ReportsAnalyticsView.tsx:185:              (c.credit_limit || 0).toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:186:              (c.due_balance || 0).toFixed(3)
+
+src/components/Reports/ReportsAnalyticsView.tsx:194:              (s.due_balance || 0).toFixed(3)
+
+src/components/Reports/ReportsAnalyticsView.tsx:198:            { label: 'Customer Dues', value: `KWD ${customerReceivables.toFixed(3)}` },
+
+src/components/Reports/ReportsAnalyticsView.tsx:199:            { label: 'Supplier Dues', value: `KWD ${supplierPayables.toFixed(3)}` }
+
+src/components/Reports/ReportsAnalyticsView.tsx:212:            ['Gross Sales Revenue', `KWD ${totalSalesRevenue.toFixed(3)}`],
+
+src/components/Reports/ReportsAnalyticsView.tsx:213:            ['Sales Returns Refunded', `KWD ${totalSalesReturnsAmount.toFixed(3)}`],
+
+src/components/Reports/ReportsAnalyticsView.tsx:214:            ['Supplier Purchases Total', `KWD ${totalPurchasesAmount.toFixed(3)}`],
+
+src/components/Reports/ReportsAnalyticsView.tsx:215:            ['Total Operating Expenses', `KWD ${totalExp.toFixed(3)}`],
+
+src/components/Reports/ReportsAnalyticsView.tsx:216:            ['Net Cash Drawer Position', `KWD ${(totalSalesRevenue - totalExp).toFixed(3)}`]
+
+src/components/Reports/ReportsAnalyticsView.tsx:219:            { label: 'Gross Sales', value: `KWD ${totalSalesRevenue.toFixed(3)}` },
+
+src/components/Reports/ReportsAnalyticsView.tsx:220:            { label: 'Net Drawer', value: `KWD ${(totalSalesRevenue - totalExp).toFixed(3)}` }
+
+src/components/Reports/ReportsAnalyticsView.tsx:231:            ['Assets', 'Inventory Valuation (at Cost)', totalStockValueCost.toFixed(3)],
+
+src/components/Reports/ReportsAnalyticsView.tsx:232:            ['Assets', 'Accounts Receivable (Customer Dues)', customerReceivables.toFixed(3)],
+
+src/components/Reports/ReportsAnalyticsView.tsx:234:            ['Liabilities', 'Accounts Payable (Supplier Dues)', supplierPayables.toFixed(3)],
+
+src/components/Reports/ReportsAnalyticsView.tsx:236:            ['Equity', 'Owner Retained Earnings & Capital', (totalStockValueCost + customerReceivables + 1250 - supplierPayables - 120).toFixed(3)]
+
+src/components/Reports/ReportsAnalyticsView.tsx:239:            { label: 'Total Assets', value: `KWD ${(totalStockValueCost + customerReceivables + 1250).toFixed(3)}` },
+
+src/components/Reports/ReportsAnalyticsView.tsx:240:            { label: 'Total Liabilities', value: `KWD ${(supplierPayables + 120).toFixed(3)}` }
+
+src/components/Reports/ReportsAnalyticsView.tsx:255:            const margin = partySales > 0 ? ((grossProfit / partySales) * 100).toFixed(1) : '0';
+
+src/components/Reports/ReportsAnalyticsView.tsx:258:              partySales.toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:259:              partyCost.toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:260:              grossProfit.toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:266:            { label: 'Total Sales', value: `KWD ${totalSalesRevenue.toFixed(3)}` }
+
+src/components/Reports/ReportsAnalyticsView.tsx:280:            const margin = price > 0 ? ((unitProfit / price) * 100).toFixed(1) : '0';
+
+src/components/Reports/ReportsAnalyticsView.tsx:283:              cost.toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:284:              price.toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:285:              unitProfit.toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:330:              (totalSalesRevenue * 0.45).toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:331:              (totalSalesRevenue * 0.55).toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:332:              totalSalesRevenue.toFixed(3)
+
+src/components/Reports/ReportsAnalyticsView.tsx:337:            { label: 'Total Billed', value: `KWD ${totalSalesRevenue.toFixed(3)}` }
+
+src/components/Reports/ReportsAnalyticsView.tsx:345:          subtitle: `Total Stock Units: ${totalStockUnits.toLocaleString()} | Cost: KWD ${totalStockValueCost.toFixed(3)} | Retail: KWD ${totalStockValueRetail.toFixed(3)}`,
+
+src/components/Reports/ReportsAnalyticsView.tsx:355:            p.cost.toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:356:            (p.cost * p.stock_quantity).toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:357:            p.price.toFixed(3),
+
+src/components/Reports/ReportsAnalyticsView.tsx:358:            (p.price * p.stock_quantity).toFixed(3)
+
+src/components/Reports/ReportsAnalyticsView.tsx:362:            { label: 'Cost Valuation', value: `KWD ${totalStockValueCost.toFixed(3)}` },
+
+src/components/Reports/ReportsAnalyticsView.tsx:363:            { label: 'Retail Valuation', value: `KWD ${totalStockValueRetail.toFixed(3)}` }
+
+src/components/Reports/ReportsAnalyticsView.tsx:492:                Total Net Sales: KWD {totalSalesRevenue.toFixed(3)}
+
+src/components/Reports/ReportsAnalyticsView.tsx:517:                      <td className="py-2.5 px-2 text-right font-mono">KWD {inv.subtotal.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:518:                      <td className="py-2.5 px-2 text-right font-mono text-rose-400">{inv.discount.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:519:                      <td className="py-2.5 px-3 text-right font-mono font-bold text-emerald-400">KWD {inv.total.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:538:                Total Returns: KWD {totalSalesReturnsAmount.toFixed(3)}
+
+src/components/Reports/ReportsAnalyticsView.tsx:562:                      <td className="py-2.5 px-3 text-right font-mono font-bold text-rose-400">KWD {ret.refund_amount.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:582:                Total Purchases: KWD {totalPurchasesAmount.toFixed(3)}
+
+src/components/Reports/ReportsAnalyticsView.tsx:606:                      <td className="py-2.5 px-3 text-right font-mono font-bold text-white">KWD {(pur.total_amount || pur.total || 0).toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:607:                      <td className="py-2.5 px-3 text-right font-mono font-bold text-emerald-400">KWD {(pur.paid_amount || 0).toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:608:                      <td className="py-2.5 px-3 text-right font-mono font-bold text-rose-400">KWD {(pur.due_amount || 0).toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:626:                Total Debit Notes: KWD {totalPurchaseReturnsAmount.toFixed(3)}
+
+src/components/Reports/ReportsAnalyticsView.tsx:649:                      <td className="py-2.5 px-3 text-right font-mono font-bold text-amber-400">KWD {ret.refund_amount.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:670:                  Total Due: KWD {customerReceivables.toFixed(3)}
+
+src/components/Reports/ReportsAnalyticsView.tsx:691:                        <td className="p-2 text-right font-mono">KWD {(c.credit_limit || 0).toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:692:                        <td className="p-2 text-right font-mono font-bold text-amber-400">KWD {(c.due_balance || 0).toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:708:                  Total Due: KWD {supplierPayables.toFixed(3)}
+
+src/components/Reports/ReportsAnalyticsView.tsx:728:                        <td className="p-2 text-right font-mono font-bold text-rose-400">KWD {(s.due_balance || 0).toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:753:                <div className="text-xl font-black text-emerald-400 font-mono mt-1">KWD {totalSalesRevenue.toFixed(3)}</div>
+
+src/components/Reports/ReportsAnalyticsView.tsx:757:                <div className="text-xl font-black text-rose-400 font-mono mt-1">KWD {expenses.reduce((sum, e) => sum + e.amount, 0).toFixed(3)}</div>
+
+src/components/Reports/ReportsAnalyticsView.tsx:762:                  KWD {(totalSalesRevenue - expenses.reduce((sum, e) => sum + e.amount, 0)).toFixed(3)}
+
+src/components/Reports/ReportsAnalyticsView.tsx:791:                    <span className="font-mono font-bold text-white">KWD {totalStockValueCost.toFixed(3)}</span>
+
+src/components/Reports/ReportsAnalyticsView.tsx:795:                    <span className="font-mono font-bold text-white">KWD {customerReceivables.toFixed(3)}</span>
+
+src/components/Reports/ReportsAnalyticsView.tsx:799:                    <span className="font-mono font-bold text-white">KWD {(totalSalesRevenue - totalPurchasesAmount).toFixed(3)}</span>
+
+src/components/Reports/ReportsAnalyticsView.tsx:804:                      KWD {(totalStockValueCost + customerReceivables + Math.max(0, totalSalesRevenue - totalPurchasesAmount)).toFixed(3)}
+
+src/components/Reports/ReportsAnalyticsView.tsx:818:                    <span className="font-mono font-bold text-white">KWD {supplierPayables.toFixed(3)}</span>
+
+src/components/Reports/ReportsAnalyticsView.tsx:822:                    <span className="font-mono font-bold text-white">KWD {totalStockValueCost.toFixed(3)}</span>
+
+src/components/Reports/ReportsAnalyticsView.tsx:827:                      KWD {(supplierPayables + totalStockValueCost).toFixed(3)}
+
+src/components/Reports/ReportsAnalyticsView.tsx:868:                        <td className="p-2 text-right font-mono font-bold text-emerald-400">KWD {rev.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:869:                        <td className="p-2 text-right font-mono text-slate-400">KWD {estCost.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:870:                        <td className="p-2 text-right font-mono font-bold text-purple-400">KWD {profit.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:904:                    const margin = price > 0 ? ((unitProfit / price) * 100).toFixed(1) : '0';
+
+src/components/Reports/ReportsAnalyticsView.tsx:908:                        <td className="p-2 text-right font-mono text-slate-400">KWD {cost.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:909:                        <td className="p-2 text-right font-mono text-white">KWD {price.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:910:                        <td className="p-2 text-right font-mono font-bold text-emerald-400">KWD {unitProfit.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:975:                    <td className="p-2 text-right font-mono text-emerald-400">KWD {(totalSalesRevenue * 0.45).toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:976:                    <td className="p-2 text-right font-mono text-blue-400">KWD {(totalSalesRevenue * 0.55).toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:977:                    <td className="p-2 text-right font-mono font-black text-purple-400">KWD {totalSalesRevenue.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:996:                  <span>Cost Value: <strong className="text-amber-400">KWD {totalStockValueCost.toFixed(3)}</strong></span>
+
+src/components/Reports/ReportsAnalyticsView.tsx:997:                  <span>Retail Value: <strong className="text-emerald-400">KWD {totalStockValueRetail.toFixed(3)}</strong></span>
+
+src/components/Reports/ReportsAnalyticsView.tsx:1039:                      <td className="p-2 text-right font-mono text-slate-300">KWD {p.cost.toFixed(3)}</td>
+
+src/components/Reports/ReportsAnalyticsView.tsx:1040:                      <td className="p-2 text-right font-mono font-bold text-amber-400">KWD {(p.stock_quantity * p.cost).toFixed(3)}</td>
+
+src/components/Reports/DayEndReportView.tsx:84:              <span className="text-base font-black text-slate-950 font-mono">KWD {grossSales.toFixed(3)}</span>
+
+src/components/Reports/DayEndReportView.tsx:88:              <span className="text-base font-black text-emerald-700 font-mono">KWD {netSales.toFixed(3)}</span>
+
+src/components/Reports/DayEndReportView.tsx:111:                  <td className="py-2 px-2 text-right font-black text-cyan-800 font-mono">{cashSales.toFixed(3)}</td>
+
+src/components/Reports/DayEndReportView.tsx:118:                  <td className="py-2 px-2 text-right font-black text-purple-800 font-mono">{knetSales.toFixed(3)}</td>
+
+src/components/Reports/DayEndReportView.tsx:125:                  <td className="py-2 px-2 text-right font-black text-orange-800 font-mono">{cardSales.toFixed(3)}</td>
+
+src/components/Reports/DayEndReportView.tsx:132:                  <td className="py-2 px-2 text-right font-black text-slate-900 font-mono">{onlineSales.toFixed(3)}</td>
+
+src/components/Reports/DayEndReportView.tsx:139:                  <td className="py-2 px-2 text-right font-black text-amber-800 font-mono">{chequeSales.toFixed(3)}</td>
+
+src/components/Reports/DayEndReportView.tsx:146:                  <td className="py-2 px-2 text-right text-sm font-mono text-emerald-700">KWD {netSales.toFixed(3)}</td>
+
+src/components/Quotations/QuotationView.tsx:347:                      <td className="p-2 text-right font-mono">{it.price.toFixed(3)}</td>
+
+src/components/Quotations/QuotationView.tsx:349:                        {it.total.toFixed(3)}
+
+src/components/Quotations/QuotationView.tsx:382:                <span className="text-lg font-black text-rose-400 font-mono">KWD {total.toFixed(3)}</span>
+
+src/components/Quotations/QuotationView.tsx:420:                      KWD {q.total.toFixed(3)}
+
+src/components/Quotations/QuotationView.tsx:476:                      <td className="p-1.5 text-right">{it.price.toFixed(3)}</td>
+
+src/components/Quotations/QuotationView.tsx:477:                      <td className="p-1.5 text-right font-black">{it.total.toFixed(3)}</td>
+
+src/components/Quotations/QuotationView.tsx:485:                <span className="text-rose-600 font-mono">KWD {activeQuoteForPrint.total.toFixed(3)}</span>
+
+src/components/Inventory/CurrentStockView.tsx:52:      p.cost.toFixed(3),
+
+src/components/Inventory/CurrentStockView.tsx:53:      p.price.toFixed(3),
+
+src/components/Inventory/CurrentStockView.tsx:54:      (p.cost * p.stock_quantity).toFixed(3),
+
+src/components/Inventory/CurrentStockView.tsx:55:      (p.price * p.stock_quantity).toFixed(3),
+
+src/components/Inventory/CurrentStockView.tsx:61:      { label: 'Cost Valuation', value: `KWD ${totalCostValuation.toFixed(3)}` },
+
+src/components/Inventory/CurrentStockView.tsx:62:      { label: 'Retail Valuation', value: `KWD ${totalRetailValuation.toFixed(3)}` },
+
+src/components/Inventory/CurrentStockView.tsx:110:            <span className="font-black text-purple-400 text-sm font-mono">KWD {totalCostValuation.toFixed(3)}</span>
+
+src/components/Inventory/CurrentStockView.tsx:115:            <span className="font-black text-emerald-400 text-sm font-mono">KWD {totalRetailValuation.toFixed(3)}</span>
+
+src/components/Inventory/CurrentStockView.tsx:225:                  <td className="py-2 px-3 text-right font-mono text-slate-400">{prod.cost.toFixed(3)}</td>
+
+src/components/Inventory/CurrentStockView.tsx:226:                  <td className="py-2 px-3 text-right font-mono font-bold text-emerald-400">{prod.price.toFixed(3)}</td>
+
+src/components/Inventory/CurrentStockView.tsx:228:                    {(prod.cost * prod.stock_quantity).toFixed(3)}
+
+src/components/Inventory/PriceListsView.tsx:105:                  ? (((tier.retail_price - tier.wholesale_price) / tier.retail_price) * 100).toFixed(0)
+
+src/components/Inventory/ItemMasterView.tsx:387:                    prod.price > 0 ? (((prod.price - prod.cost) / prod.price) * 100).toFixed(0) : 0;
+
+src/components/Inventory/ItemMasterView.tsx:436:                        {prod.cost.toFixed(3)}
+
+src/components/Inventory/ItemMasterView.tsx:440:                        {prod.price.toFixed(3)}
+
+src/components/Accounting/AccountingDashboard.tsx:66:  const grossMarginPct = totalRevenue > 0 ? (((grossProfit || 0) / totalRevenue) * 100).toFixed(1) : '0';
+
+src/components/Accounting/AccountingDashboard.tsx:70:  const netMarginPct = totalRevenue > 0 ? (((netProfit || 0) / totalRevenue) * 100).toFixed(1) : '0';
+
+src/components/Accounting/AccountingDashboard.tsx:88:    { name: 'Cash', value: Number((paymentTotals.cash || 0).toFixed(2)), color: '#06b6d4' },
+
+src/components/Accounting/AccountingDashboard.tsx:89:    { name: 'K-Net', value: Number((paymentTotals.knet || 0).toFixed(2)), color: '#a855f7' },
+
+src/components/Accounting/AccountingDashboard.tsx:90:    { name: 'Card', value: Number((paymentTotals.card || 0).toFixed(2)), color: '#f97316' },
+
+src/components/Accounting/AccountingDashboard.tsx:91:    { name: 'Online', value: Number((paymentTotals.online || 0).toFixed(2)), color: '#eab308' },
+
+src/components/Accounting/AccountingDashboard.tsx:92:    { name: 'Cheque', value: Number((paymentTotals.cheque || 0).toFixed(2)), color: '#92400e' },
+
+src/components/Accounting/AccountingDashboard.tsx:105:    value: Number((expensesByCategory[cat] || 0).toFixed(2)),
+
+src/components/Accounting/AccountingDashboard.tsx:114:    { name: 'Aug 27', revenue: Number((totalRevenue || 0).toFixed(0)), cogs: Number((totalCOGS || 0).toFixed(0)), expense: Number(((totalExpenses || 0) / 5).toFixed(0)), profit: Number((netProfit || 0).toFixed(0)) },
+
+src/components/Accounting/AccountingDashboard.tsx:172:            KWD {(totalRevenue || 0).toFixed(3)}
+
+src/components/Accounting/AccountingDashboard.tsx:186:            KWD {(totalCOGS || 0).toFixed(3)}
+
+src/components/Accounting/AccountingDashboard.tsx:200:            KWD {(grossProfit || 0).toFixed(3)}
+
+src/components/Accounting/AccountingDashboard.tsx:212:            KWD {(totalExpenses || 0).toFixed(3)}
+
+src/components/Accounting/AccountingDashboard.tsx:226:            KWD {(netProfit || 0).toFixed(3)}
+
+src/components/Accounting/AccountingDashboard.tsx:325:                    {exp.amount.toFixed(3)}
+
+src/components/POS/CustomerHistoryPanel.tsx:266:                KWD {(customer.due_balance || 0).toFixed(3)}
+
+src/components/POS/CustomerHistoryPanel.tsx:292:                KWD {(customerStats.totalSpend || 0).toFixed(3)}
+
+src/components/POS/CustomerHistoryPanel.tsx:305:                KWD {(customerStats.avgSpend || 0).toFixed(3)}
+
+src/components/POS/CustomerHistoryPanel.tsx:399:                        KWD {(inv.total || 0).toFixed(3)}
+
+src/components/POS/CustomerHistoryPanel.tsx:411:                            ({it.qty} {it.unit} @ KWD {(it.price || 0).toFixed(3)})
+
+src/components/POS/CustomerHistoryPanel.tsx:415:                          KWD {(it.total || 0).toFixed(3)}
+
+src/components/POS/CustomerHistoryPanel.tsx:497:                                Last: KWD {(topItem.lastPrice || 0).toFixed(3)}
+
+src/components/POS/PosView.tsx:166:            total: Number((item.qty * recalledPrice).toFixed(3)),
+
+src/components/POS/PosView.tsx:194:            total: Number(applicablePrice.toFixed(3)) 
+
+src/components/POS/PosView.tsx:217:        total: Number((it.qty * applicablePrice).toFixed(3)),
+
+src/components/POS/PosView.tsx:295:        total: Number((newQty * priceToUse).toFixed(3)),
+
+src/components/POS/PosView.tsx:310:        total: Number(applicablePrice.toFixed(3)),
+
+src/components/POS/PosView.tsx:339:      total: Number((newQty * updated[index].price).toFixed(3)),
+
+src/components/POS/PosView.tsx:358:      total: Number((updated[index].qty * safePrice).toFixed(3)),
+
+src/components/POS/PosView.tsx:368:    const recalculatedPrice = Number((safeTotal / qty).toFixed(3));
+
+src/components/POS/PosView.tsx:598:                              Due: {cust.due_balance.toFixed(3)}
+
+src/components/POS/PosView.tsx:1069:                KWD {selectedCustomer.due_balance.toFixed(3)}
+
+src/components/POS/PosView.tsx:1221:                {grandTotal.toFixed(3)}
+
+src/components/POS/PosView.tsx:1241:                  {returnAmt.toFixed(3)}
+
+src/components/POS/PartyItemPriceHistoryModal.tsx:174:                <span>Last Selling Price: <strong className="text-emerald-400">KWD {standardSellingPrice.toFixed(3)}</strong></span>
+
+src/components/POS/PartyItemPriceHistoryModal.tsx:194:                <span className="text-amber-400 font-bold">Due: KWD {customer.due_balance.toFixed(3)}</span>
+
+src/components/POS/PartyItemPriceHistoryModal.tsx:208:              KWD {lastBilledPrice.toFixed(3)}
+
+src/components/POS/PartyItemPriceHistoryModal.tsx:221:              KWD {avgPrice.toFixed(3)}
+
+src/components/POS/PartyItemPriceHistoryModal.tsx:234:              KWD {minPrice.toFixed(3)}
+
+src/components/POS/PartyItemPriceHistoryModal.tsx:245:              KWD {maxPrice.toFixed(3)}
+
+src/components/POS/PartyItemPriceHistoryModal.tsx:287:                          This product has not been billed to this customer before. The current line is using the Last Selling Price (KWD {standardSellingPrice.toFixed(3)}).
+
+src/components/POS/PartyItemPriceHistoryModal.tsx:330:                          {rec.unitPrice.toFixed(3)}
+
+src/components/POS/PartyItemPriceHistoryModal.tsx:335:                          {rec.totalPrice.toFixed(3)}
+
+src/components/POS/PartyItemPriceHistoryModal.tsx:349:                              title={`Apply unit price KWD ${rec.unitPrice.toFixed(3)} to active line`}
+
+src/components/POS/InvoicePrintModal.tsx:126:                        <span className="col-span-2 text-right">{(item.price || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:128:                          {(item.total || 0).toFixed(3)}
+
+src/components/POS/InvoicePrintModal.tsx:140:                  <span>{(invoice.subtotal || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:145:                    <span>-{(invoice.discount || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:151:                    <span>{(invoice.other_amt || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:156:                  <span>KWD {(invoice.total || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:166:                    <span>{(invoice.payments?.cash || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:172:                    <span>{(invoice.payments?.knet || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:178:                    <span>{(invoice.payments?.card || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:184:                    <span>{(invoice.payments?.online || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:190:                    <span>{(invoice.payments?.cheque || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:196:                    <span>{(invoice.return_amt || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:269:                      <td className="py-2 px-2 text-right">{(it.price || 0).toFixed(3)}</td>
+
+src/components/POS/InvoicePrintModal.tsx:270:                      <td className="py-2 px-2 text-right font-bold text-slate-900">{(it.total || 0).toFixed(3)}</td>
+
+src/components/POS/InvoicePrintModal.tsx:280:                    <span>KWD {(invoice.subtotal || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:285:                      <span>-KWD {(invoice.discount || 0).toFixed(3)}</span>
+
+src/components/POS/InvoicePrintModal.tsx:290:                    <span className="text-rose-600">KWD {(invoice.total || 0).toFixed(3)}</span>
+
+src/components/Purchase/SupplierItemPriceHistoryModal.tsx:169:                <span>Standard Cost: <strong className="text-amber-400">KWD {standardCost.toFixed(3)}</strong></span>
+
+src/components/Purchase/SupplierItemPriceHistoryModal.tsx:189:                <span className="text-rose-400 font-bold">Payable: KWD {supplier.due_balance.toFixed(3)}</span>
+
+src/components/Purchase/SupplierItemPriceHistoryModal.tsx:203:              KWD {lastPurchaseRate.toFixed(3)}
+
+src/components/Purchase/SupplierItemPriceHistoryModal.tsx:216:              KWD {avgCost.toFixed(3)}
+
+src/components/Purchase/SupplierItemPriceHistoryModal.tsx:229:              KWD {minCost.toFixed(3)}
+
+src/components/Purchase/SupplierItemPriceHistoryModal.tsx:240:              KWD {maxCost.toFixed(3)}
+
+src/components/Purchase/SupplierItemPriceHistoryModal.tsx:282:                          This product has not been purchased from this supplier before. Using standard catalog cost (KWD {standardCost.toFixed(3)}).
+
+src/components/Purchase/SupplierItemPriceHistoryModal.tsx:328:                          {rec.unitCost.toFixed(3)}
+
+src/components/Purchase/SupplierItemPriceHistoryModal.tsx:333:                          {rec.totalCost.toFixed(3)}
+
+src/components/Purchase/SupplierItemPriceHistoryModal.tsx:347:                              title={`Apply purchase rate KWD ${rec.unitCost.toFixed(3)} to active line`}
+
+src/components/Purchase/PurchaseReturnView.tsx:75:        total: Number((1 * it.cost).toFixed(3)),
+
+src/components/Purchase/PurchaseReturnView.tsx:90:        total: Number((newQty * updated[existingIndex].cost).toFixed(3)),
+
+src/components/Purchase/PurchaseReturnView.tsx:104:          total: Number(prod.cost.toFixed(3)),
+
+src/components/Purchase/PurchaseReturnView.tsx:119:      total: Number((qty * updated[index].cost).toFixed(3)),
+
+src/components/Purchase/PurchaseReturnView.tsx:130:      total: Number((updated[index].qty * cost).toFixed(3)),
+
+src/components/Purchase/PurchaseReturnView.tsx:234:                      {pur.purchase_no} ({pur.supplier_name} - KWD {(pur.total_amount || pur.total || 0).toFixed(3)})
+
+src/components/Purchase/PurchaseReturnView.tsx:260:                      {supp.name} (Due: KWD {supp.due_balance.toFixed(3)})
+
+src/components/Purchase/PurchaseReturnView.tsx:376:                Total Value: <strong className="text-amber-400 font-bold">KWD {subtotal.toFixed(3)}</strong>
+
+src/components/Purchase/PurchaseReturnView.tsx:419:                          {item.total.toFixed(3)}
+
+src/components/Purchase/PurchaseReturnView.tsx:464:                KWD {subtotal.toFixed(3)}
+
+src/components/Purchase/PurchaseReturnView.tsx:533:                    <span className="font-mono font-bold text-emerald-400">KWD {ret.refund_amount.toFixed(3)}</span>
+
+src/components/Purchase/PurchaseOrderView.tsx:87:        total: Number((newQty * updated[existingIndex].cost).toFixed(3)),
+
+src/components/Purchase/PurchaseOrderView.tsx:101:          total: Number((10 * prod.cost).toFixed(3)),
+
+src/components/Purchase/PurchaseOrderView.tsx:115:      total: Number((validQty * updated[index].cost).toFixed(3)),
+
+src/components/Purchase/PurchaseOrderView.tsx:126:      total: Number((updated[index].qty * validCost).toFixed(3)),
+
+src/components/Purchase/PurchaseOrderView.tsx:382:                  PO Total: <strong className="text-emerald-400 font-bold">KWD {subtotal.toFixed(3)}</strong>
+
+src/components/Purchase/PurchaseOrderView.tsx:424:                            {item.total.toFixed(3)}
+
+src/components/Purchase/PurchaseOrderView.tsx:460:                  KWD {subtotal.toFixed(3)}
+
+src/components/Purchase/PurchaseOrderView.tsx:526:                      {po.total_amount.toFixed(3)}
+
+src/components/Purchase/PurchaseOrderView.tsx:600:                      <td className="p-2 text-right font-mono">KWD {it.cost.toFixed(3)}</td>
+
+src/components/Purchase/PurchaseOrderView.tsx:601:                      <td className="p-2 text-right font-mono font-bold text-emerald-400">KWD {it.total.toFixed(3)}</td>
+
+src/components/Purchase/PurchaseOrderView.tsx:610:                Grand Total: <span className="text-emerald-400">KWD {viewingPO.total_amount.toFixed(3)}</span>
+
+src/components/Purchase/PurchaseListView.tsx:64:              KWD {filteredPurchases.reduce((sum, p) => sum + (p.total_amount || p.total || 0), 0).toFixed(3)}
+
+src/components/Purchase/PurchaseListView.tsx:105:                      {totalAmt.toFixed(3)}
+
+src/components/Purchase/PurchaseListView.tsx:108:                      {paidAmt.toFixed(3)}
+
+src/components/Purchase/PurchaseListView.tsx:111:                      {dueAmt.toFixed(3)}
+
+src/components/Purchase/PurchaseListView.tsx:185:                      <td className="p-2 text-right font-mono">KWD {it.cost.toFixed(3)}</td>
+
+src/components/Purchase/PurchaseListView.tsx:186:                      <td className="p-2 text-right font-mono font-bold text-emerald-400">KWD {it.total.toFixed(3)}</td>
+
+src/components/Purchase/PurchaseListView.tsx:196:                  Total Bill: <span className="text-emerald-400">KWD {(selectedPurchase.total_amount || selectedPurchase.total || 0).toFixed(3)}</span>
+
+src/components/Purchase/PurchaseListView.tsx:199:                  Paid: KWD {(selectedPurchase.paid_amount || 0).toFixed(3)} • Due: KWD {(selectedPurchase.due_amount || 0).toFixed(3)}
+
+src/components/Purchase/PurchaseView.tsx:174:            total: Number((item.qty * recalledCost).toFixed(3)),
+
+src/components/Purchase/PurchaseView.tsx:199:        total: Number((newQty * costToUse).toFixed(3)),
+
+src/components/Purchase/PurchaseView.tsx:212:        total: Number(applicableCost.toFixed(3)),
+
+src/components/Purchase/PurchaseView.tsx:241:      total: Number((newQty * updated[index].cost).toFixed(3)),
+
+src/components/Purchase/PurchaseView.tsx:253:      total: Number((updated[index].qty * safeCost).toFixed(3)),
+
+src/components/Purchase/PurchaseView.tsx:263:    const recalculatedCost = Number((safeTotal / qty).toFixed(3));
+
+src/components/Purchase/PurchaseView.tsx:559:                                Payable: {supp.due_balance.toFixed(3)}
+
+src/components/Purchase/PurchaseView.tsx:1004:                    KWD {selectedSupplier.due_balance.toFixed(3)}
+
+src/components/Purchase/PurchaseView.tsx:1022:                    KWD {subtotal.toFixed(3)}
+
+src/components/Purchase/PurchaseView.tsx:1058:                    KWD {grandTotal.toFixed(3)}
+
+src/components/Purchase/PurchaseView.tsx:1086:                      <span>Post Purchase Bill (KWD {grandTotal.toFixed(3)})</span>
+
+src/components/Purchase/PurchaseView.tsx:1154:                        KWD {pur.total_amount.toFixed(3)}
+
+src/components/Purchase/PurchaseView.tsx:1434:                          <td className="py-2 text-right font-mono text-blue-300">{it.cost.toFixed(3)}</td>
+
+src/components/Purchase/PurchaseView.tsx:1435:                          <td className="py-2 text-right font-mono font-bold text-emerald-400">{it.total.toFixed(3)}</td>
+
+src/components/Purchase/PurchaseView.tsx:1449:                        KWD {bill.total_amount.toFixed(3)}
+
+src/components/Invoices/InvoiceListView.tsx:159:                      {(inv.total || 0).toFixed(3)}
+
+src/components/Masters/PartyMasterView.tsx:286:              KWD {(partyType === 'customer' ? totalCustomerReceivables : totalSupplierPayables).toFixed(3)}
+
+src/components/Masters/PartyMasterView.tsx:414:                          KWD {(cust.due_balance || 0).toFixed(3)}
+
+src/components/Masters/PartyMasterView.tsx:418:                        KWD {(cust.credit_limit || 0).toFixed(3)}
+
+src/components/Masters/PartyMasterView.tsx:491:                          KWD {(supp.due_balance || 0).toFixed(3)}
+
+src/components/Sales/SalesReturnView.tsx:81:        total: Number((1 * it.price).toFixed(3)),
+
+src/components/Sales/SalesReturnView.tsx:96:        total: Number((newQty * updated[existingIndex].price).toFixed(3)),
+
+src/components/Sales/SalesReturnView.tsx:110:          total: Number(prod.price.toFixed(3)),
+
+src/components/Sales/SalesReturnView.tsx:125:      total: Number((qty * updated[index].price).toFixed(3)),
+
+src/components/Sales/SalesReturnView.tsx:136:      total: Number((updated[index].qty * price).toFixed(3)),
+
+src/components/Sales/SalesReturnView.tsx:243:                        {inv.invoice_no} ({inv.customer_name} - KWD {inv.total.toFixed(3)})
+
+src/components/Sales/SalesReturnView.tsx:374:                Subtotal: <strong className="text-emerald-400 font-bold">KWD {subtotal.toFixed(3)}</strong>
+
+src/components/Sales/SalesReturnView.tsx:417:                          {item.total.toFixed(3)}
+
+src/components/Sales/SalesReturnView.tsx:463:                KWD {subtotal.toFixed(3)}
+
+src/components/Sales/SalesReturnView.tsx:555:                    <span className="font-mono font-bold text-emerald-400">KWD {ret.refund_amount.toFixed(3)}</span>
+
+src/components/Vouchers/VoucherView.tsx:169:                      {c.name} (Due: KWD {c.due_balance.toFixed(3)})
+
+src/components/Vouchers/VoucherView.tsx:174:                      {s.name} (Payable: KWD {s.due_balance.toFixed(3)})
+
+src/components/Vouchers/VoucherView.tsx:321:                        {vouch.amount.toFixed(3)}
+
+src/components/Vouchers/VoucherView.tsx:382:                <span className="font-mono text-emerald-400">KWD {viewingVoucher.amount.toFixed(3)}</span>
+
+src/components/Dashboard/DashboardView.tsx:58:  const grossProfitMargin = totalSalesRevenue > 0 ? ((totalGrossProfit / totalSalesRevenue) * 100).toFixed(1) : '0.0';
+
+src/components/Dashboard/DashboardView.tsx:88:    { name: 'Cash', value: Number((paymentBreakdownTotals.cash || 0).toFixed(3)), color: '#10b981' },
+
+src/components/Dashboard/DashboardView.tsx:89:    { name: 'K-Net / Debit', value: Number((paymentBreakdownTotals.knet || 0).toFixed(3)), color: '#3b82f6' },
+
+src/components/Dashboard/DashboardView.tsx:90:    { name: 'Visa / Mastercard', value: Number(((paymentBreakdownTotals.visa || 0) + (paymentBreakdownTotals.card || 0)).toFixed(3)), color: '#8b5cf6' },
+
+src/components/Dashboard/DashboardView.tsx:91:    { name: 'Online / Transfer', value: Number((paymentBreakdownTotals.online || 0).toFixed(3)), color: '#f59e0b' },
+
+src/components/Dashboard/DashboardView.tsx:92:    { name: 'Cheque', value: Number((paymentBreakdownTotals.cheque || 0).toFixed(3)), color: '#ec4899' },
+
+src/components/Dashboard/DashboardView.tsx:101:    { month: 'Aug (Current)', sales: Number((totalSalesRevenue || 0).toFixed(2)), purchase: Number((totalPurchasesAmount || 0).toFixed(2)), profit: Number((totalGrossProfit || 0).toFixed(2)) },
+
+src/components/Dashboard/DashboardView.tsx:174:              KWD {totalSalesRevenue.toFixed(3)}
+
+src/components/Dashboard/DashboardView.tsx:192:              KWD {totalPurchasesAmount.toFixed(3)}
+
+src/components/Dashboard/DashboardView.tsx:210:              KWD {totalGrossProfit.toFixed(3)}
+
+src/components/Dashboard/DashboardView.tsx:228:              KWD {totalCustomerReceivables.toFixed(3)}
+
+src/components/Dashboard/DashboardView.tsx:246:              KWD {totalSupplierPayables.toFixed(3)}
+
+src/components/Dashboard/DashboardView.tsx:349:                    formatter={(val) => `KWD ${Number(val).toFixed(3)}`}
+
+src/components/Dashboard/DashboardView.tsx:365:                <span className="font-mono font-bold text-white">KWD {item.value.toFixed(3)}</span>
+
+src/components/Dashboard/DashboardView.tsx:409:                        {(prod.revenue || 0).toFixed(3)}
+
+src/components/Dashboard/DashboardView.tsx:463:                      {(inv.total || 0).toFixed(3)}
+
