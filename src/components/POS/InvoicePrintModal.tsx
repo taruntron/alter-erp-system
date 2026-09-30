@@ -93,7 +93,7 @@ export const InvoicePrintModal: React.FC<InvoicePrintModalProps> = ({
         </div>
 
         {/* Invoice Preview Container */}
-        <div className="p-4 sm:p-6 overflow-y-auto flex-1 bg-slate-200/60 flex justify-center items-start">
+        <div className="p-2 sm:p-6 overflow-auto flex-1 bg-slate-200/60 flex justify-center items-start custom-scrollbar">
           {/* 1. THERMAL 80mm */}
           {printFormat === 'thermal_80mm' && (
             <div 

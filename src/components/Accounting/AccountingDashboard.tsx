@@ -135,7 +135,7 @@ export const AccountingDashboard: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-42px)] bg-slate-900 text-slate-100 overflow-y-auto font-sans p-3 sm:p-4 space-y-4">
+    <div className="flex flex-col h-full bg-slate-900 text-slate-100 overflow-y-auto font-sans p-3 sm:p-4 space-y-4 custom-scrollbar">
       {/* Top Banner */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-950 p-3 rounded-lg border border-slate-800">
         <div>

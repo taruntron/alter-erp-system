@@ -30,7 +30,7 @@ export const PurchaseListView: React.FC = () => {
   );
 
   return (
-    <div className="h-[calc(100vh-42px)] overflow-y-auto bg-slate-950 text-slate-100 p-4 space-y-4">
+    <div className="h-full overflow-y-auto bg-slate-950 text-slate-100 p-3 sm:p-4 space-y-4 custom-scrollbar">
       {/* Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
         <div>
@@ -123,12 +123,25 @@ export const PurchaseListView: React.FC = () => {
                       </span>
                     </td>
                     <td className="py-2.5 px-3 text-center">
-                      <button
-                        onClick={() => setSelectedPurchase(p)}
-                        className="bg-slate-800 hover:bg-slate-700 text-blue-300 text-xs px-2.5 py-1 rounded font-bold transition-colors flex items-center gap-1 mx-auto"
-                      >
-                        <Eye className="w-3.5 h-3.5" /> View
-                      </button>
+                      <div className="flex items-center justify-center gap-1.5">
+                        <button
+                          onClick={() => {
+                            setPurchaseToPrint(p);
+                            setIsPrintModalOpen(true);
+                          }}
+                          title="Print Purchase Bill (A4, A5, 80mm)"
+                          className="bg-slate-800 hover:bg-slate-700 text-blue-300 hover:text-white text-xs px-2.5 py-1 rounded font-bold transition-colors flex items-center gap-1 cursor-pointer"
+                        >
+                          <Printer className="w-3.5 h-3.5" /> Print
+                        </button>
+                        <button
+                          onClick={() => setSelectedPurchase(p)}
+                          title="View Details"
+                          className="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs px-2 py-1 rounded font-bold transition-colors flex items-center gap-1 cursor-pointer"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 );

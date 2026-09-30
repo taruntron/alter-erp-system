@@ -127,7 +127,7 @@ export const QuotationView: React.FC<QuotationViewProps> = ({ onConvertToSale })
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-42px)] bg-slate-900 text-slate-100 overflow-y-auto font-sans p-3 sm:p-4 space-y-4">
+    <div className="flex flex-col h-full bg-slate-900 text-slate-100 overflow-y-auto font-sans p-3 sm:p-4 space-y-4 custom-scrollbar">
       {/* Top Header */}
       <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 flex items-center justify-between flex-wrap gap-2">
         <div className="flex items-center gap-2">
@@ -385,9 +385,10 @@ export const QuotationView: React.FC<QuotationViewProps> = ({ onConvertToSale })
               <button
                 disabled={items.length === 0}
                 onClick={handleCreateQuotation}
-                className="bg-purple-700 hover:bg-purple-600 disabled:bg-slate-800 disabled:text-slate-600 text-white font-bold text-xs px-4 py-2 rounded shadow-xs"
+                className="bg-purple-700 hover:bg-purple-600 disabled:bg-slate-800 disabled:text-slate-600 text-white font-bold text-xs px-4 py-2 rounded shadow-xs cursor-pointer flex items-center gap-1.5"
               >
-                Generate Quote
+                <Printer className="w-3.5 h-3.5" />
+                <span>Generate & Print Quote (80mm / A4)</span>
               </button>
             </div>
           </div>

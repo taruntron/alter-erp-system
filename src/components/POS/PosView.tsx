@@ -295,7 +295,7 @@ export const PosView: React.FC = () => {
   const [lastCreatedInvoice, setLastCreatedInvoice] = useState<Invoice | null>(null);
   const [viewingHistoricalInvoice, setViewingHistoricalInvoice] = useState<Invoice | null>(null);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
-  const [printFormatTarget, setPrintFormatTarget] = useState<'thermal' | 'a4'>('a4');
+  const [printFormatTarget, setPrintFormatTarget] = useState<'thermal' | 'a4'>('thermal');
 
   // Customer History & Party Price History State
   const [isCustomerHistoryOpen, setIsCustomerHistoryOpen] = useState<boolean>(false);
@@ -766,7 +766,7 @@ export const PosView: React.FC = () => {
   };
 
   // Finalize invoice & deduct stock
-  const handlePayAndPrint = async (format: 'thermal' | 'a4' = 'a4') => {
+  const handlePayAndPrint = async (format: 'thermal' | 'a4' = 'thermal') => {
     if (items.length === 0) {
       alert('Please add at least one item to generate an invoice.');
       return;
@@ -865,7 +865,7 @@ export const PosView: React.FC = () => {
   }, [items, grandTotal, paymentInputs, tenderCash, returnAmt, selectedCustomer, isCashSale, narration, user, activeSection, isProcessing]);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-42px)] bg-slate-900 text-slate-100 overflow-hidden font-sans">
+    <div className="flex flex-col h-full bg-slate-900 text-slate-100 overflow-hidden font-sans">
       {/* Hidden Multi-Invoice Billing Queue Bar (Right click on Sales button or on this bar creates multiple bills) */}
       <div 
         id="pos-billing-queue-bar"
@@ -964,7 +964,7 @@ export const PosView: React.FC = () => {
       {/* Top Action Bar (Matching Video 1) */}
       <div className="bg-slate-950 p-2 border-b border-slate-800 flex items-center justify-between gap-2 flex-wrap">
         {/* Customer Search & Select with Quick Add Plus Button & History */}
-        <div className="flex items-center gap-1.5 flex-1 min-w-[320px] max-w-lg">
+        <div className="flex items-center gap-1.5 flex-1 min-w-0 w-full sm:w-auto sm:min-w-[280px] max-w-lg">
           <div ref={customerContainerRef} className="relative flex-1">
             <div className="flex items-center bg-white rounded border border-slate-300 shadow-xs">
               <User className="w-4 h-4 ml-2 text-purple-700 pointer-events-none shrink-0" />
@@ -1140,7 +1140,7 @@ export const PosView: React.FC = () => {
         </div>
 
         {/* Item Search Bar & Quick Add */}
-        <div ref={itemSearchContainerRef} className="relative flex-2 min-w-[280px] max-w-xl">
+        <div ref={itemSearchContainerRef} className="relative flex-2 min-w-0 w-full sm:w-auto sm:min-w-[260px] max-w-xl">
           <div className="flex items-center bg-white rounded border border-slate-300 shadow-xs">
             <Search className="w-4 h-4 ml-2.5 text-purple-700 pointer-events-none shrink-0" />
             <input
@@ -1320,9 +1320,9 @@ export const PosView: React.FC = () => {
       </div>
 
       {/* Main Table Grid Area */}
-      <div className="flex-1 overflow-auto bg-slate-950 p-2 sm:p-3">
+      <div className="flex-1 overflow-auto bg-slate-950 p-2 sm:p-3 custom-scrollbar">
         <div className="bg-slate-900 rounded border border-slate-800 overflow-hidden shadow-md">
-          <table className="w-full text-left text-xs border-collapse">
+          <table className="w-full text-left text-xs border-collapse min-w-[720px]">
             <thead>
               <tr className="bg-slate-950 text-slate-300 uppercase text-[11px] font-black tracking-wider border-b border-slate-800">
                 <th className="py-2.5 px-3 w-12 text-center">SrNo</th>
@@ -1765,37 +1765,23 @@ export const PosView: React.FC = () => {
               </div>
             </div>
 
-            {/* Pay & Print Dual Action / Buttons (A4 on click, 80mm on Ctrl+P) */}
-            <div className="flex flex-col gap-1.5">
+            {/* Unified Pay & Print (80mm Thermal Receipt) Button */}
+            <div className="flex flex-col gap-1">
               <button
                 id="btn-pos-pay-and-print"
-                disabled={isProcessing || items.length === 0}
-                onClick={() => handlePayAndPrint('a4')}
-                title="Click for Standard A4 Tax-Free Invoice"
-                className={`w-full py-2 rounded text-xs sm:text-sm font-black uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 ${
-                  items.length === 0
-                    ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
-                    : 'bg-rose-600 hover:bg-rose-500 active:scale-98 text-white shadow-rose-950/50'
-                }`}
-              >
-                <Printer className="w-4 h-4" />
-                <span>{isProcessing ? 'Processing...' : 'PAY & PRINT (A4)'}</span>
-              </button>
-
-              <button
-                id="btn-pos-pay-and-print-thermal"
                 type="button"
                 disabled={isProcessing || items.length === 0}
                 onClick={() => handlePayAndPrint('thermal')}
-                title="Keyboard Shortcut: Ctrl+P or Cmd+P"
-                className={`w-full py-1.5 rounded text-[11px] font-bold tracking-wide transition-all border flex items-center justify-center gap-1.5 ${
+                title="Pay & Print 80mm Thermal Receipt (Ctrl+P)"
+                className={`w-full py-2.5 sm:py-3 px-3 rounded-lg text-xs sm:text-sm font-black uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer ${
                   items.length === 0
-                    ? 'bg-slate-900 border-slate-800 text-slate-600 cursor-not-allowed'
-                    : 'bg-purple-950/70 hover:bg-purple-900/90 text-purple-200 border-purple-700/80 active:scale-98 shadow-xs'
+                    ? 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700'
+                    : 'bg-rose-600 hover:bg-rose-500 active:scale-98 text-white shadow-rose-950/50 border border-rose-500'
                 }`}
               >
-                <span>⚡ 80mm Thermal Receipt</span>
-                <kbd className="bg-purple-900 border border-purple-600 text-purple-200 text-[9px] font-mono px-1.5 py-0.5 rounded font-black">
+                <Printer className="w-4 h-4 shrink-0" />
+                <span className="truncate">{isProcessing ? 'Processing...' : 'Pay & Print (80mm Thermal Receipt)'}</span>
+                <kbd className="hidden sm:inline-block bg-rose-900/90 border border-rose-400/40 text-rose-100 text-[9px] font-mono px-1.5 py-0.5 rounded font-black shrink-0">
                   Ctrl+P
                 </kbd>
               </button>

@@ -75,6 +75,7 @@ export const VoucherView: React.FC<VoucherViewProps> = ({ defaultType = 'payment
       });
 
       setToastMsg(`${voucherType === 'payment' ? 'Payment' : 'Receipt'} Voucher ${created.voucher_no} posted!`);
+      setViewingVoucher(created);
       setSelectedPartyId('');
       setPartyName('');
       setAmount(0);
@@ -91,7 +92,7 @@ export const VoucherView: React.FC<VoucherViewProps> = ({ defaultType = 'payment
   const filteredVouchers = vouchers.filter((v) => v.type === voucherType);
 
   return (
-    <div className="h-[calc(100vh-42px)] overflow-y-auto bg-slate-950 text-slate-100 p-4 space-y-4">
+    <div className="h-full overflow-y-auto bg-slate-950 text-slate-100 p-3 sm:p-4 space-y-4 custom-scrollbar">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
         <div>
@@ -279,14 +280,14 @@ export const VoucherView: React.FC<VoucherViewProps> = ({ defaultType = 'payment
           <button
             type="submit"
             disabled={isSubmitting || amount <= 0 || !partyName}
-            className={`w-full text-white font-black text-xs py-2.5 rounded-lg shadow-lg flex items-center justify-center gap-1.5 transition-colors ${
+            className={`w-full text-white font-black text-xs py-2.5 rounded-lg shadow-lg flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
               voucherType === 'payment'
                 ? 'bg-rose-600 hover:bg-rose-500'
                 : 'bg-emerald-600 hover:bg-emerald-500'
             }`}
           >
-            <Receipt className="w-4 h-4" />
-            {isSubmitting ? 'Posting...' : `Post ${voucherType === 'payment' ? 'Payment' : 'Receipt'} Voucher`}
+            <Printer className="w-4 h-4" />
+            {isSubmitting ? 'Posting...' : `Post & Print ${voucherType === 'payment' ? 'Payment' : 'Receipt'} Voucher (80mm / A4)`}
           </button>
         </form>
 

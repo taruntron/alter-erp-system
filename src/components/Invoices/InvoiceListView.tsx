@@ -50,7 +50,7 @@ export const InvoiceListView: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-42px)] bg-slate-900 text-slate-100 overflow-hidden font-sans">
+    <div className="flex flex-col h-full bg-slate-900 text-slate-100 overflow-hidden font-sans">
       {/* Top Header */}
       <div className="bg-slate-950 p-3 border-b border-slate-800 flex items-center justify-between flex-wrap gap-2">
         <div className="flex items-center gap-2">
@@ -115,9 +115,9 @@ export const InvoiceListView: React.FC = () => {
       </div>
 
       {/* Invoices Table */}
-      <div className="flex-1 overflow-auto p-3 bg-slate-950">
+      <div className="flex-1 overflow-auto p-3 bg-slate-950 custom-scrollbar">
         <div className="bg-slate-900 rounded border border-slate-800 overflow-hidden shadow-md">
-          <table className="w-full text-left text-xs border-collapse">
+          <table className="w-full text-left text-xs border-collapse min-w-[760px]">
             <thead>
               <tr className="bg-slate-950 text-slate-400 uppercase text-[10px] font-black border-b border-slate-800 tracking-wider">
                 <th className="py-2.5 px-3 w-12 text-center">#</th>

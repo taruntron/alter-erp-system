@@ -754,7 +754,7 @@ export const PurchaseView: React.FC = () => {
       });
 
   return (
-    <div className="flex flex-col h-[calc(100vh-42px)] bg-slate-900 text-slate-100 overflow-hidden font-sans">
+    <div className="flex flex-col h-full bg-slate-900 text-slate-100 overflow-hidden font-sans">
       {/* Top Action & Sub-Navigation Bar */}
       <div className="bg-slate-950 px-4 py-2 border-b border-slate-800 flex items-center justify-between gap-3 shrink-0">
         <div className="flex items-center gap-3">
@@ -1700,7 +1700,7 @@ export const PurchaseView: React.FC = () => {
                     ) : (
                       <>
                         <CheckCircle className="w-4 h-4" />
-                        <span>Post Purchase</span>
+                        <span>Post & Print Purchase (80mm / A4)</span>
                       </>
                     )}
                   </button>

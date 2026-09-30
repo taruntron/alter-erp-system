@@ -85,7 +85,7 @@ export const QuotationPrintModal: React.FC<QuotationPrintModalProps> = ({
         </div>
 
         {/* Document Preview Body */}
-        <div className="p-4 sm:p-6 overflow-y-auto flex-1 bg-slate-200/60 flex justify-center items-start">
+        <div className="p-2 sm:p-6 overflow-auto flex-1 bg-slate-200/60 flex justify-center items-start custom-scrollbar">
           {printFormat === 'thermal_80mm' ? (
             /* Thermal 80mm */
             <div className="w-[320px] bg-white p-4 shadow-xl border border-slate-300 text-slate-950 font-mono text-xs leading-tight paper-thermal-80mm printable-document">

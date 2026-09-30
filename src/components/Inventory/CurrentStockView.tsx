@@ -85,7 +85,7 @@ export const CurrentStockView: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-42px)] bg-slate-900 text-slate-100 overflow-hidden font-sans">
+    <div className="flex flex-col h-full bg-slate-900 text-slate-100 overflow-hidden font-sans">
       {/* Top Header & Valuation Cards */}
       <div className="bg-slate-950 p-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">

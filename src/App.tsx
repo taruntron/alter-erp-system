@@ -36,7 +36,12 @@ import { MasterControlView } from './components/Admin/MasterControlView';
 
 const AppContent: React.FC = () => {
   const [activeView, setActiveView] = useState<NavViewKey>(() => getInitialView());
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth >= 1024;
+    }
+    return false;
+  });
   const [isDesktopCollapsed, setIsDesktopCollapsed] = useState<boolean>(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; navKey: NavViewKey; label: string } | null>(null);

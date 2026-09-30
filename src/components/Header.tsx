@@ -319,7 +319,7 @@ export const Header: React.FC<HeaderProps> = ({
                   }
                 }
               }}
-              className="bg-transparent text-slate-900 font-bold text-xs px-2 py-1 outline-none cursor-pointer pr-3"
+              className="bg-transparent text-slate-900 font-bold text-xs px-2 py-1 outline-none cursor-pointer pr-3 max-w-[110px] sm:max-w-[180px] truncate"
             >
               {availableSections.map((sec) => (
                 <option key={sec.id} value={sec.name} className="text-slate-900 font-medium">

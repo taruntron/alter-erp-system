@@ -241,11 +241,11 @@ export const StockTransferView: React.FC = () => {
   });
 
   return (
-    <div className="flex flex-col h-[calc(100vh-42px)] bg-slate-900 text-slate-100 overflow-hidden font-sans select-none">
+    <div className="flex flex-col h-full bg-slate-900 text-slate-100 overflow-hidden font-sans select-none">
       {/* Top Filter Bar (Matching Sales Invoice Flow) */}
       <div className="bg-slate-950 p-2 border-b border-slate-800 flex items-center justify-between gap-3 flex-wrap">
         {/* Search Item input with live dropdown */}
-        <div ref={searchContainerRef} className="relative flex-1 min-w-[280px] max-w-lg">
+        <div ref={searchContainerRef} className="relative flex-1 min-w-0 w-full sm:w-auto sm:min-w-[260px] max-w-lg">
           <div className="flex items-center bg-white rounded border border-slate-300 shadow-xs focus-within:ring-2 focus-within:ring-purple-500">
             <Search className="w-4 h-4 ml-2.5 text-purple-700 pointer-events-none shrink-0" />
             <input

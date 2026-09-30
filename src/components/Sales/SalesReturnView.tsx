@@ -13,9 +13,11 @@ import {
   Calendar,
   CreditCard,
   Building,
-  AlertCircle
+  AlertCircle,
+  Printer
 } from 'lucide-react';
-import { Product, ProductUnit, SalesReturnItem } from '../../types';
+import { Product, ProductUnit, SalesReturnItem, Invoice } from '../../types';
+import { InvoicePrintModal } from '../POS/InvoicePrintModal';
 
 export const SalesReturnView: React.FC = () => {
   const { invoices, customers, products, salesReturns, createSalesReturn } = useStore();
@@ -32,6 +34,64 @@ export const SalesReturnView: React.FC = () => {
   const [narration, setNarration] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [selectedReturnForPrint, setSelectedReturnForPrint] = useState<any | null>(null);
+
+  const mapReturnToInvoice = (ret: any): Invoice => ({
+    id: ret.id,
+    invoice_no: ret.return_no,
+    customer_name: ret.customer_name || 'Cash Customer',
+    customer_phone: ret.customer_phone,
+    customer_id: ret.customer_id,
+    items: (ret.items && ret.items.length > 0)
+      ? ret.items.map((i: any) => ({
+          product_id: i.product_id || 'ret-item',
+          sku: i.sku || '',
+          barcode: i.barcode || '',
+          name: `${i.name}${i.return_reason ? ` (${i.return_reason})` : ''}`,
+          unit: i.unit || 'UNIT',
+          qty: i.qty || 1,
+          stock: 0,
+          price: i.price || 0,
+          total: i.total || ((i.qty || 1) * (i.price || 0)),
+        }))
+      : [{
+          product_id: 'ret-item',
+          sku: 'RET',
+          barcode: '',
+          name: `Sales Return (${ret.original_invoice_no ? `Ref #${ret.original_invoice_no}` : ret.narration || 'Credit Note'})`,
+          unit: 'UNIT',
+          qty: 1,
+          stock: 0,
+          price: ret.refund_amount || 0,
+          total: ret.refund_amount || 0,
+        }],
+    subtotal: ret.subtotal || ret.refund_amount || 0,
+    discount: 0,
+    other_amt: 0,
+    total: ret.refund_amount || 0,
+    paid_amount: ret.refund_amount || 0,
+    due_amount: 0,
+    credit_amount: 0,
+    payments: {
+      cash: ret.refund_method === 'cash' ? ret.refund_amount : 0,
+      visa: 0,
+      card: ret.refund_method === 'card' ? ret.refund_amount : 0,
+      online: 0,
+      knet: ret.refund_method === 'knet' ? ret.refund_amount : 0,
+      cheque: 0,
+      credit: ret.refund_method === 'credit_note' ? ret.refund_amount : 0,
+      upi: 0,
+    },
+    status: 'paid',
+    tender_cash: 0,
+    return_amt: 0,
+    cashier_uid: 'cashier',
+    cashier_name: ret.cashier_name || 'Cashier',
+    section: ret.section || 'SEENU CARE Co.',
+    narration: `Sales Return Credit Note / Refund: ${ret.narration || ''} (Orig Inv: ${ret.original_invoice_no || 'N/A'})`,
+    timestamp: ret.created_at || ret.date || new Date().toISOString(),
+    date: ret.date || new Date().toISOString().split('T')[0],
+  });
 
   // Filter products for manual item return
   const [itemSearch, setItemSearch] = useState('');
@@ -159,7 +219,7 @@ export const SalesReturnView: React.FC = () => {
 
     setIsSubmitting(true);
     try {
-      await createSalesReturn({
+      const created = await createSalesReturn({
         original_invoice_no: selectedInvoiceNo || undefined,
         customer_id: selectedCustomerId || undefined,
         customer_name: customerName,
@@ -175,6 +235,9 @@ export const SalesReturnView: React.FC = () => {
       });
 
       setShowSuccessToast(true);
+      if (created) {
+        setSelectedReturnForPrint(created);
+      }
       setReturnItems([]);
       setSelectedInvoiceNo('');
       setCustomerName('CASH CUSTOMER');
@@ -195,7 +258,7 @@ export const SalesReturnView: React.FC = () => {
   );
 
   return (
-    <div className="h-[calc(100vh-42px)] overflow-y-auto bg-slate-950 text-slate-100 p-4 space-y-4">
+    <div className="h-full overflow-y-auto bg-slate-950 text-slate-100 p-3 sm:p-4 space-y-4 custom-scrollbar">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
         <div>
@@ -551,7 +614,18 @@ export const SalesReturnView: React.FC = () => {
               {salesReturns.map((ret) => (
                 <div key={ret.id} className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 text-xs space-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono font-bold text-rose-400">{ret.return_no}</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-mono font-bold text-rose-400">{ret.return_no}</span>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedReturnForPrint(ret)}
+                        title="Print Credit Note / Return Slip (80mm Thermal, A4, A5)"
+                        className="bg-slate-800 hover:bg-slate-700 text-rose-300 hover:text-white px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1 transition-colors cursor-pointer"
+                      >
+                        <Printer className="w-3 h-3" />
+                        <span>Print</span>
+                      </button>
+                    </div>
                     <span className="font-mono font-bold text-emerald-400">KWD {(ret.refund_amount || 0).toFixed(3)}</span>
                   </div>
                   <div className="text-slate-300 font-medium truncate">{ret.customer_name}</div>
@@ -565,6 +639,15 @@ export const SalesReturnView: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Sales Return Credit Note Print Modal */}
+      {selectedReturnForPrint && (
+        <InvoicePrintModal
+          invoice={mapReturnToInvoice(selectedReturnForPrint)}
+          initialFormat="thermal_80mm"
+          onClose={() => setSelectedReturnForPrint(null)}
+        />
+      )}
     </div>
   );
 };

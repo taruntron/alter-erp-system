@@ -9,9 +9,11 @@ import {
   Building, 
   Banknote, 
   FileText,
-  Boxes
+  Boxes,
+  Printer
 } from 'lucide-react';
-import { Product, PurchaseReturnItem } from '../../types';
+import { Product, PurchaseReturnItem, PurchaseReturn } from '../../types';
+import { PurchasePrintModal } from './PurchasePrintModal';
 
 export const PurchaseReturnView: React.FC = () => {
   const { purchases, suppliers, products, purchaseReturns, createPurchaseReturn, activeSection } = useStore();
@@ -27,6 +29,7 @@ export const PurchaseReturnView: React.FC = () => {
   const [narration, setNarration] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [selectedReturnForPrint, setSelectedReturnForPrint] = useState<PurchaseReturn | null>(null);
 
   const [itemSearch, setItemSearch] = useState('');
   const [showProductDropdown, setShowProductDropdown] = useState(false);
@@ -153,7 +156,7 @@ export const PurchaseReturnView: React.FC = () => {
 
     setIsSubmitting(true);
     try {
-      await createPurchaseReturn({
+      const created = await createPurchaseReturn({
         original_purchase_no: selectedPurchaseNo || undefined,
         supplier_id: selectedSupplierId || undefined,
         supplier_name: supplierName,
@@ -168,6 +171,9 @@ export const PurchaseReturnView: React.FC = () => {
       });
 
       setShowSuccessToast(true);
+      if (created) {
+        setSelectedReturnForPrint(created);
+      }
       setReturnItems([]);
       setSelectedPurchaseNo('');
       setSupplierName('');
@@ -188,7 +194,7 @@ export const PurchaseReturnView: React.FC = () => {
   );
 
   return (
-    <div className="h-[calc(100vh-42px)] overflow-y-auto bg-slate-950 text-slate-100 p-4 space-y-4">
+    <div className="h-full overflow-y-auto bg-slate-950 text-slate-100 p-3 sm:p-4 space-y-4 custom-scrollbar">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
         <div>
@@ -529,7 +535,18 @@ export const PurchaseReturnView: React.FC = () => {
               {purchaseReturns.map((ret) => (
                 <div key={ret.id} className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 text-xs space-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono font-bold text-amber-400">{ret.return_no}</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-mono font-bold text-amber-400">{ret.return_no}</span>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedReturnForPrint(ret)}
+                        title="Print Debit Note (80mm Thermal, A4, A5)"
+                        className="bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-white px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1 transition-colors cursor-pointer"
+                      >
+                        <Printer className="w-3 h-3" />
+                        <span>Print</span>
+                      </button>
+                    </div>
                     <span className="font-mono font-bold text-emerald-400">KWD {(ret.refund_amount || 0).toFixed(3)}</span>
                   </div>
                   <div className="text-slate-300 font-medium truncate">{ret.supplier_name}</div>
@@ -543,6 +560,16 @@ export const PurchaseReturnView: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Modern Multi-Format Purchase Return / Debit Note Print Modal */}
+      {selectedReturnForPrint && (
+        <PurchasePrintModal
+          document={selectedReturnForPrint}
+          type="purchase_return"
+          initialFormat="thermal_80mm"
+          onClose={() => setSelectedReturnForPrint(null)}
+        />
+      )}
     </div>
   );
 };
